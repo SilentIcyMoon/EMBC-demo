@@ -1,0 +1,338 @@
+<html>
+  <head>
+	  <meta charset="UTF-8">
+	  <title>Robust Sequence-to-sequence Voice Conversion for Electrolaryngeal Speech Enhancement in Noisy and Reverberant Conditions</title>
+  </head>
+  <body>
+	  <article>
+      <header>
+        <h1>Robust Sequence-to-sequence Voice Conversion for Electrolaryngeal Speech Enhancement in Noisy and Reverberant Conditions</h1>
+      </header>
+  	  </article>
+	<div><b>Authors:</b> Ding Ma, Yeonjong Choi, Fengji Li, Chao Xie, Kazuhiro Kobayashi, Tomoki Toda</div>
+	<div><b>Comments:</b> Submitted to the IEEE Engineering in Medicine and Biology Society (IEEE EMBC).</div>  
+	<div style="width: 80%">
+		<b>Abstract:</b> Electrolaryngeal (EL) speech is an artificial speech produced by an exectrolarynx to enable laryngectomees communicate without vocal fold vibrations. Compared with normal speech, EL speech lacks essential phonetic features and has a different temporal structure, resulting in poor naturalness and intelligibility. To address this dificiency, sequence-to-sequence (seq2seq) voice conversion (VC) models have been applied in converting EL speech to normal speech (EL2SP), showing some promising performances. However, previous VC studies for EL2SP mostly focus on converting clean EL speech input, thereby restricting the further applicability in real-world communication scenarios, especially when the EL speech is inevitably interfered with background noise and reverberation. In light of this, we suggest a novel and efficient training techniques based on seq2seq VC to enhance the robustness of real-world EL2SP. We first pretrain a normal-to-normal seq2seq VC model based on a text-to-speech (TTS) model. Then, we fine-tune this pretrained model with the environment-specific training data constructed from only a small amount of original clean data of EL2SP available. Several design options are investigated to figure out the effectiveness of our method. The experimental results indicate that our method can non-trivially handle both clean EL speech and noisy-reverberant EL speech. Furthermore, significant improvements presented in the results demonstrate that our method can enhance the robustness of EL2SP in the real-world scenarios.
+	</div>
+
+  <div>
+      	<h3><b>Main concept</b></h3>
+      	<img src="samples/Fig1_new_update1.jpg" style="width: 30%;"/>
+  </div>
+
+<div style="width: 80%">
+  <h3><b></b>EL2SP dataset</b></h3>
+  <strong>Source EL data</strong>, which is an EL corpus recorded from a laryngectomee; <strong>Target normal data</strong>, which is a simulated nomral courpus recorded from a healthy speaker.
+</div>
+
+<div style="width: 80%">
+  <h3><b>Two experimental conditions for the evaluation</b></h3>
+  <ul>
+    <li>Clean condition: Convert the <strong>clean</strong> EL speech to clean target normal speech.</li>
+    <li>Noisy-Reverberant condition: Convert the <strong>noisy-reverberant (NR)</strong> EL Speech to clean target normal speech.</li>
+  </ul>
+  </div>
+
+    <div style="width: 80%">
+      <h3><b>Eleven types of speech were evaluated.</b></h3>
+      <ul>
+        <li><strong>Referenced speech</strong>:</li>
+			<ul>
+				<li>Source: Clean EL speech (<strong>C-EL</strong>), NR EL speech (<strong>NR-EL</strong>).</li>
+				<li>Target: Clean normal speech (<strong>C-SP</strong>).</li>
+			</ul>
+        <li><strong>Converted speech from Baseline 1</strong>:</li>
+		<ul>
+			<li>Conversion in clean condition: <strong>C-B.1</strong></li>
+			<li>Conversion in NR condition: <strong>NR-B.1</strong></li>
+		</ul>
+		<li><strong>Converted speech from Model 1</strong>:</li>
+			<ul>
+				<li>Conversion in clean condition: <strong>C-M.1</strong></li>
+				<li>Conversion in NR condition: <strong>NR-M.1</strong></li>
+			</ul>
+        <li><strong>Converted speech from Model 2</strong>:</li>
+		<ul>
+			<li>Conversion in clean condition: <strong>C-M.2</strong></li>
+			<li>Conversion in NR condition: <strong>NR-M.2</strong></li>
+		</ul>
+        <li><strong>Converted speech from Model 3</strong>:</li>
+		<ul>
+			<li>Conversion in clean condition: <strong>C-M.3</strong></li>
+			<li>Conversion in NR condition: <strong>NR-M.3</strong></li>
+		</ul>
+    </ul>
+	</div> 
+
+    <div style="width: 80%">
+		<h3><b>Samples</b></h3>
+		
+        <!-- sample 1 -->
+        <h4 class="transcript">Transcription: 高度は約一万フィートです。 (koudo ha yaku ichiman fu i to de su)</h4>
+		<table>
+			<tr>
+			  <th>C-EL</th><th>NR-EL</th><th>C-SP</th>
+			</tr>
+		    <tr>
+		      <th style="text-align: left;" colspan="2">Reference:</th>
+		    </tr>
+		    <tr style="border-top: solid; border-bottom: solid;">
+		      <td>
+		        <audio controls><source src="samples/conversion/reference/c-el/AASA223.wav"></audio>
+		      </td>
+		      <td>
+		        <audio controls><source src="samples/conversion/reference/nr-el/ASA223.wav"></audio>
+		      </td>
+		      <td>
+		        <audio controls><source src="samples/conversion/reference/c-sp/AASA223.wav"></audio>
+		      </td>
+		    </tr>
+		</table>
+        <table>
+            <tr style="border-top: solid; border-bottom: solid;">
+              <th>C-B.1</th><th>C-M.1</th><th>C-M.2</th><th>C-M.3</th>
+            </tr>
+		    <tr>
+		      <th style="text-align: left;" colspan="2">Conversion:</th>
+		    </tr>
+            <tr style="border-top: solid; border-bottom: solid;">
+              <td>
+                <audio controls><source src="samples/conversion/clean/b1/clean_AASA223.wav"></audio>
+              </td>
+              <td>
+                <audio controls><source src="samples/conversion/clean/m1/clean_AASA223.wav"></audio>
+              </td>
+              <td>
+                <audio controls><source src="samples/conversion/clean/m2/clean_AASA223.wav"></audio>
+              </td>
+              <td>
+                <audio controls><source src="samples/conversion/clean/m3/clean_AASA223.wav"></audio>
+              </td>
+            </tr>
+        </table>
+
+        <table>
+          <tr style="border-top: solid; border-bottom: solid;">
+            <th>NR-B.1</th><th>NR-M.1</th><th>NR-M.2</th><th>NR-M.3</th>
+          </tr>
+      <tr>
+        <th style="text-align: left;" colspan="2">Conversion:</th>
+      </tr>
+          <tr style="border-top: solid; border-bottom: solid;">
+            <td>
+              <audio controls><source src="samples/conversion/nr/b1/noise_ASA223.wav"></audio>
+            </td>
+            <td>
+              <audio controls><source src="samples/conversion/nr/m1/noise_ASA223.wav"></audio>
+            </td>
+            <td>
+              <audio controls><source src="samples/conversion/nr/m2/noise_ASA223.wav"></audio>
+            </td>
+            <td>
+              <audio controls><source src="samples/conversion/nr/m3/noise_ASA223.wav"></audio>
+            </td>
+          </tr>
+      </table>
+		  <br>
+        <!-- sample 2 -->
+        <h4 class="transcript">Transcription: 税関を出たところで受け取れるはずです。 (zeikan wo de ta tokoro de uketo re ru ha zu de su)</h4>
+		<table>
+			<tr>
+			  <th>C-EL</th><th>NR-EL</th><th>C-SP</th>
+			</tr>
+		    <tr>
+		      <th style="text-align: left;" colspan="2">Reference:</th>
+		    </tr>
+		    <tr style="border-top: solid; border-bottom: solid;">
+		      <td>
+		        <audio controls><source src="samples/conversion/reference/c-el/AASA232.wav"></audio>
+		      </td>
+		      <td>
+		        <audio controls><source src="samples/conversion/reference/nr-el/ASA232.wav"></audio>
+		      </td>
+		      <td>
+		        <audio controls><source src="samples/conversion/reference/c-sp/AASA232.wav"></audio>
+		      </td>
+		    </tr>
+		</table>
+        <table>
+            <tr style="border-top: solid; border-bottom: solid;">
+              <th>C-B.1</th><th>C-M.1</th><th>C-M.2</th><th>C-M.3</th>
+            </tr>
+		    <tr>
+		      <th style="text-align: left;" colspan="2">Conversion:</th>
+		    </tr>
+            <tr style="border-top: solid; border-bottom: solid;">
+              <td>
+                <audio controls><source src="samples/conversion/clean/b1/clean_AASA232.wav"></audio>
+              </td>
+              <td>
+                <audio controls><source src="samples/conversion/clean/m1/clean_AASA232.wav"></audio>
+              </td>
+              <td>
+                <audio controls><source src="samples/conversion/clean/m2/clean_AASA232.wav"></audio>
+              </td>
+              <td>
+                <audio controls><source src="samples/conversion/clean/m3/clean_AASA232.wav"></audio>
+              </td>
+            </tr>
+        </table>
+
+        <table>
+          <tr style="border-top: solid; border-bottom: solid;">
+            <th>NR-B.1</th><th>NR-M.1</th><th>NR-M.2</th><th>NR-M.3</th>
+          </tr>
+      <tr>
+        <th style="text-align: left;" colspan="2">Conversion:</th>
+      </tr>
+          <tr style="border-top: solid; border-bottom: solid;">
+            <td>
+              <audio controls><source src="samples/conversion/nr/b1/noise_ASA232.wav"></audio>
+            </td>
+            <td>
+              <audio controls><source src="samples/conversion/nr/m1/noise_ASA232.wav"></audio>
+            </td>
+            <td>
+              <audio controls><source src="samples/conversion/nr/m2/noise_ASA232.wav"></audio>
+            </td>
+            <td>
+              <audio controls><source src="samples/conversion/nr/m3/noise_ASA232.wav"></audio>
+            </td>
+          </tr>
+      </table>
+      <br>
+        <!-- sample 3 -->
+        <h4 class="transcript">Transcription: 日本の民芸品です。 (nihon no mingeihin de su)</h4>
+		<table>
+			<tr>
+			  <th>C-EL</th><th>NR-EL</th><th>C-SP</th>
+			</tr>
+		    <tr>
+		      <th style="text-align: left;" colspan="2">Reference:</th>
+		    </tr>
+		    <tr style="border-top: solid; border-bottom: solid;">
+		      <td>
+		        <audio controls><source src="samples/conversion/reference/c-el/AASA221.wav"></audio>
+		      </td>
+		      <td>
+		        <audio controls><source src="samples/conversion/reference/nr-el/ASA221.wav"></audio>
+		      </td>
+		      <td>
+		        <audio controls><source src="samples/conversion/reference/c-sp/AASA221.wav"></audio>
+		      </td>
+		    </tr>
+		</table>
+        <table>
+            <tr style="border-top: solid; border-bottom: solid;">
+              <th>C-B.1</th><th>C-M.1</th><th>C-M.2</th><th>C-M.3</th>
+            </tr>
+		    <tr>
+		      <th style="text-align: left;" colspan="2">Conversion:</th>
+		    </tr>
+            <tr style="border-top: solid; border-bottom: solid;">
+              <td>
+                <audio controls><source src="samples/conversion/clean/b1/clean_AASA221.wav"></audio>
+              </td>
+              <td>
+                <audio controls><source src="samples/conversion/clean/m1/clean_AASA221.wav"></audio>
+              </td>
+              <td>
+                <audio controls><source src="samples/conversion/clean/m2/clean_AASA221.wav"></audio>
+              </td>
+              <td>
+                <audio controls><source src="samples/conversion/clean/m3/clean_AASA221.wav"></audio>
+              </td>
+            </tr>
+        </table>
+
+        <table>
+          <tr style="border-top: solid; border-bottom: solid;">
+            <th>NR-B.1</th><th>NR-M.1</th><th>NR-M.2</th><th>NR-M.3</th>
+          </tr>
+      <tr>
+        <th style="text-align: left;" colspan="2">Conversion:</th>
+      </tr>
+          <tr style="border-top: solid; border-bottom: solid;">
+            <td>
+              <audio controls><source src="samples/conversion/nr/b1/noise_ASA221.wav"></audio>
+            </td>
+            <td>
+              <audio controls><source src="samples/conversion/nr/m1/noise_ASA221.wav"></audio>
+            </td>
+            <td>
+              <audio controls><source src="samples/conversion/nr/m2/noise_ASA221.wav"></audio>
+            </td>
+            <td>
+              <audio controls><source src="samples/conversion/nr/m3/noise_ASA221.wav"></audio>
+            </td>
+          </tr>
+      </table>
+      <br>
+        <!-- sample 4 -->
+        <h4 class="transcript">Transcription: ２０２便をキャンセルしたいのですが。 (ni hya ku ni bin wo kya	n	se ru shi ta i no de su ga)</h4>
+		<table>
+			<tr>
+			  <th>C-EL</th><th>NR-EL</th><th>C-SP</th>
+			</tr>
+		    <tr>
+		      <th style="text-align: left;" colspan="2">Reference:</th>
+		    </tr>
+		    <tr style="border-top: solid; border-bottom: solid;">
+		      <td>
+		        <audio controls><source src="samples/conversion/reference/c-el/AASA302.wav"></audio>
+		      </td>
+		      <td>
+		        <audio controls><source src="samples/conversion/reference/nr-el/ASA302.wav"></audio>
+		      </td>
+		      <td>
+		        <audio controls><source src="samples/conversion/reference/c-sp/AASA302.wav"></audio>
+		      </td>
+		    </tr>
+		</table>
+        <table>
+            <tr style="border-top: solid; border-bottom: solid;">
+              <th>C-B.1</th><th>C-M.1</th><th>C-M.2</th><th>C-M.3</th>
+            </tr>
+		    <tr>
+		      <th style="text-align: left;" colspan="2">Conversion:</th>
+		    </tr>
+            <tr style="border-top: solid; border-bottom: solid;">
+              <td>
+                <audio controls><source src="samples/conversion/clean/b1/clean_AASA302.wav"></audio>
+              </td>
+              <td>
+                <audio controls><source src="samples/conversion/clean/m1/clean_AASA302.wav"></audio>
+              </td>
+              <td>
+                <audio controls><source src="samples/conversion/clean/m2/clean_AASA302.wav"></audio>
+              </td>
+              <td>
+                <audio controls><source src="samples/conversion/clean/m3/clean_AASA302.wav"></audio>
+              </td>
+            </tr>
+        </table>
+
+        <table>
+          <tr style="border-top: solid; border-bottom: solid;">
+            <th>NR-B.1</th><th>NR-M.1</th><th>NR-M.2</th><th>NR-M.3</th>
+          </tr>
+      <tr>
+        <th style="text-align: left;" colspan="2">Conversion:</th>
+      </tr>
+          <tr style="border-top: solid; border-bottom: solid;">
+            <td>
+              <audio controls><source src="samples/conversion/nr/b1/noise_ASA302.wav"></audio>
+            </td>
+            <td>
+              <audio controls><source src="samples/conversion/nr/m1/noise_ASA302.wav"></audio>
+            </td>
+            <td>
+              <audio controls><source src="samples/conversion/nr/m2/noise_ASA302.wav"></audio>
+            </td>
+            <td>
+              <audio controls><source src="samples/conversion/nr/m3/noise_ASA302.wav"></audio>
+            </td>
+          </tr>
+      </table>
+  </body>
+</html>
